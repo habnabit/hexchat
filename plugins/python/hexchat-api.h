@@ -8,8 +8,6 @@ typedef struct {
 	time_t server_time_utc; /* 0 if not used */
 } hexchat_event_attrs;
 
-extern "Python" int on_pytest (char *word[], char *word_eol[], void *user_data);
-
 hexchat_hook *
 hexchat_hook_command (hexchat_plugin *ph,
 		    const char *name,
@@ -90,7 +88,7 @@ int
 hexchat_emit_print (hexchat_plugin *ph,
 		  const char *event_name, ...);
 
-int 
+int
 hexchat_emit_print_attrs (hexchat_plugin *ph, hexchat_event_attrs *attrs,
 						  const char *event_name, ...);
 

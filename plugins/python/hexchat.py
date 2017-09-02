@@ -3,11 +3,11 @@
 import sys
 import cffi
 
-with open(sys.argv[1]) as f:
-    data = f.read()
-
 builder = cffi.FFI()
-builder.embedding_api(data)
+with open(sys.argv[1]) as f:
+    builder.embedding_api(f.read())
+with open(sys.argv[2]) as f:
+    builder.cdef(f.read())
 
 builder.set_source('hexchat', '''
 #undef HAVE_STRINGS_H
@@ -62,4 +62,4 @@ builder.embedding_init_code("""
         return 0
 """)
 
-builder.emit_c_code(sys.argv[2])
+builder.emit_c_code(sys.argv[3])
